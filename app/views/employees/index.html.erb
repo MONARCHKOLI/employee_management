@@ -1,0 +1,47 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Navbar</a>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search"  placeholder="Search for employee" aria-label="Search" name="query">
+      <input class="btn btn-outline-success" type="submit" value="Search" data-disable-with="Search">
+    </form>
+  </div>
+</nav>
+
+<% if flash[:success] %>
+    <div class="alert alert-success"><%= flash[:success] %></div>
+<% end %>
+<h1>Hello Admin </h1>
+
+<%=link_to 'Add Employee', new_employee_path%>
+<br>
+<hr>
+<hr>
+
+<table class="table table-dark table-hover">
+<thead>
+    <tr>
+      <th scope="col">S.NO.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Date Of Birth</th>
+      <th scope="col">Mobile Number</th>
+      <th scope="col">Years Of Experience</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @employees.each_with_index do |employee,index|%>
+    <tr>
+      <th scope="row"><%=index +1%></th>
+      <td><%= link_to "#{employee.name}", employee_path(employee)%></td>
+      <td><%=employee.address%></td>
+      <td><%=employee.date_of_birth%></td>
+      <td><%=employee.mobile_number%></td>
+      <td><%=employee.years_of_expeerience%></td>
+      <td><%= link_to 'Edit', edit_employee_path(employee), :class => "btn btn-info"%>&nbsp;<%= link_to 'Destroy', employee_path(employee.id),method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"}%></td>
+
+    </tr>
+    <%end%>
+  </tbody>
+</table>
