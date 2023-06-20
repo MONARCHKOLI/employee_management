@@ -1,0 +1,7 @@
+<h1>New employee</h1>
+
+<% if @employee.errors.any? %>
+  <%= @employee.errors.full_messages %>
+<% end %>
+
+<%= render "form"%>
