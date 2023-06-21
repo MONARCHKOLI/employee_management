@@ -4,18 +4,19 @@ class EmployeesController < ApplicationController
   def index
 		if params[:query].present?
 			@employees = Employee.where("name like ?","%#{params[:query]}%")
+			render json: {employee: @employees}
 		else
   		@employees = Employee.all.order(:name)
-		end
+	end
   end
   
   def show
     @employee = Employee.find_by(name: params[:id]) || Employee.find(params[:id])
   end
 
-	def new
-		@employee = Employee.new
-	end
+  def new
+  	@employee = Employee.new
+  end
 
 	def create
 		@employee = Employee.new(employee_params)
