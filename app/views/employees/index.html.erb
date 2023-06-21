@@ -2,9 +2,9 @@
   <div class="container-fluid">
     <a class="navbar-brand">Navbar</a>
     <form class="d-flex">
-      <input class="form-control me-2" type="search"  placeholder="Search for employee" aria-label="Search" name="query">
-      <input class="btn btn-outline-success" type="submit" value="Search" data-disable-with="Search">&nbsp;
-      <button class="btn btn-outline-info" type="refresh" value="refresh" data-disable-with="Search">Refresh</button>
+      <input class="form-control me-2" type="search"  placeholder="Search for employee" onkeyup="live_search(this.value)" aria-label="Search" name="query" id="search">
+      <input class="btn btn-outline-success" type="submit" value="Search" data-disable-with="Searching..">&nbsp;
+      <button class="btn btn-outline-info" type="refresh" value="refresh" data-disable-with="Refreshing..">Refresh</button>
     </form>
   </div>
 </nav>
@@ -31,7 +31,7 @@
       <th scope="col">Actions</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="search_body" id="tableBody">
   <% @employees.each_with_index do |employee,index|%>
     <tr>
       <th scope="row"><%=index +1%></th>
@@ -41,8 +41,8 @@
       <td><%=employee.mobile_number%></td>
       <td><%=employee.years_of_experience%></td>
       <td><%= link_to 'Edit', edit_employee_path(employee), :class => "btn btn-info"%>&nbsp;<%= link_to 'Destroy', employee_path(employee.id),method: :delete, :class => "btn btn-danger", data: {confirm: "Are you sure?"}%></td>
-
     </tr>
-    <%end%>
+    <h1 id="no_data"></h1>
+    <%end %>
   </tbody>
 </table>
