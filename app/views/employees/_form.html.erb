@@ -1,40 +1,40 @@
-<%= form_with model: @employee do |form|%>
-    <div>
+<%= form_with model: employee do |form|%>
+  <div>
     <%= form.label :name %><br>
-    <%= form.text_field :name, size: "30x5"%>
-    <% @employee.errors.full_messages_for(:name).each do |message| %>
+    <%= form.text_field :name, size: "30x5", :required => true%>
+    <% employee.errors.full_messages_for(:name).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
   <div>
     <%= form.label :address %><br>
-    <%= form.text_area :address, size: "30x5"%><br>
-    <% @employee.errors.full_messages_for(:address).each do |message| %>
+    <%= form.text_area :address, size: "30x5", :required => true%><br>
+    <% employee.errors.full_messages_for(:address).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
   <div>
     <%= form.label :date_of_birth %><br>
-    <%= form.datetime_select :date_of_birth, size: "30x5" %><br>
-    <% @employee.errors.full_messages_for(:date_of_birth).each do |message| %>
+    <%= form.datetime_select :date_of_birth, size: "30x5", :required => true %><br>
+    <% employee.errors.full_messages_for(:date_of_birth).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
   <div>
-    <%= form.label :years_of_expeerience %><br>
-    <%= form.number_field :years_of_expeerience, in: 1.0..20.0, step: 0.5 %><br>
-    <% @employee.errors.full_messages_for(:years_of_expeerience).each do |message| %>
+    <%= form.label :years_of_experience %><br>
+    <%= form.number_field :years_of_experience, in: 1.0..20.0, step: 0.5 , :required => true%><br>
+    <% employee.errors.full_messages_for(:years_of_experience).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
   <div>
     <%= form.label :phone_number %><br>
-    <%= form.phone_field :mobile_number , size: "30x5"%><br>
-    <% @employee.errors.full_messages_for(:mobile_number).each do |message| %>
+    <%= form.phone_field :mobile_number , size: "30x5" , :required => true%><br>
+    <% employee.errors.full_messages_for(:mobile_number).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
@@ -42,5 +42,4 @@
   <div>
     <%= form.submit %>
   </div>
-
 <% end %>

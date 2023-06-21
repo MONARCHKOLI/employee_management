@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_20_101045) do
+ActiveRecord::Schema.define(version: 2023_06_21_052238) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.date "date_of_birth"
     t.integer "mobile_number"
-    t.float "years_of_expeerience"
+    t.float "years_of_experience"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
