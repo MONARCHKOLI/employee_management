@@ -11,14 +11,14 @@
   <script>
     function live_search(value) {
       text = document.getElementById('search').value
-      console.log(text)
+      // console.log(text)
       $.ajax({
         type: "GET",
         url: "employees?query=" + this.text,
         data: {'search_keyword' : value},
         dataType: "json",
         success: function(msg){
-          console.log(msg)
+          // console.log(msg)
           let jsonData = msg.employee
           // document.getElementsByClassName("search_body").style.display = "none";
           let container = document.getElementById("container");
@@ -50,6 +50,8 @@
     }
   </script>
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
     <style>
         .material-symbols-outlined {
